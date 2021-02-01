@@ -221,9 +221,9 @@ b = a; System.out.println(b); //10.0 upcasting
 //a = b; //error System.out.println(a);
 a = (int)b; System.out.println(a); //10 downcasting
 b = 10 / 3; System.out.println(b); //3.0
-b = (double)10 / 3; System.out.println(b); //3.333
-b = (int)10.2 + (int)3.3; System.out.println(b); //13.0
-b = (int)10.2 + 3.3; System.out.println(b); //13.3
+b = (double)10 / 3; System.out.println(b); //3.333 downcasting
+b = (int)10.2 + (int)3.3; System.out.println(b); //13.0 downcasting
+b = (int)10.2 + 3.3; System.out.println(b); //13.3 downcasting
 ```
 
 
@@ -309,11 +309,104 @@ preferences - JAVA - Installed JREs 잘 설치되어있는지 확인 - 위에서
 
 ## 연산자와 문자열
 
+![image-20210201145411008](md-images/image-20210201145411008.png)
+
+
+
+**문자열**
+
+문자열은 클래스다! why=>문자열이 갖고있어야할 메서드들이 많기 떄문에 String을 클래스로 만들었다.
+
+![image-20210201152811750](md-images/image-20210201152811750.png)
+
+> String객체를 생성할 때 2가지 방법
+
+```java
+String str1 = “ABCD”;
+String str1 = new String(“ABCD”);
+```
+
+str에 새로운 값을 넣으면 값이 수정이 되는 것이 아닌 새로운 객체가 생성되는 것이다.
+
+![image-20210201153610659](md-images/image-20210201153610659.png)
+
+```java
+String a = "abc";
+String b = new String("abc");
+String c = "abc";
+String d = new String("abc");
+System.out.println(a==b);//False =>주소가 다르다
+System.out.println(a.equals(b));//True =>문자열이같다
+System.out.println(a==c);//True =>주소가 같다
+System.out.println(a.equals(c));//True =>문자열이같다
+```
+
+같은 string을 주게 되면 같은 주소를 가르키게 된다!! 그래서 a==c가 True
+
+
+
+String 인스턴스가 갖는 문자열은 읽어올 수 있고 수정이 불가능하다.
+
+> ex
+
+```jade
+a="cba";//abc를 담고있던 주소는 남아있고 cba를 갖는 주소가 새로생긴다
+b=new String("cba");//새로 생성
+System.out.println(a==b);//False
+System.out.println(a.equals(b));//True
+```
+
+**수정이 불가능 = 이미 할당된 주소에 넣어진 값을 수정못할 뿐 주소값을 달리해서 생성할 수 있다!**
+
+
+
+**String 메소드**
+
+![image-20210201161042939](md-images/image-20210201161042939.png)
+
+```java
+String a = "hello";
+String b = "Hello";
+String ssn = "950201-1124444";
+
+//b에서 ll추출하기
+System.out.println(a.substring(2,4));		
+//b를 소문자로 변환
+System.out.println(b.toLowerCase());
+//b를 대문자로 변환
+System.out.println(b.toUpperCase());
+//ssn에서 남녀를 추출할려면?
+System.out.println(ssn.charAt(7)=='1' ? "Man":"Woman");		
+//c의 길이는?
+System.out.println(ssn.length());
+```
+
+
+
 
 
 
 
 ## 제어문(분기문, 반복문)
+
+```java
+int pay;
+int hours;
+Scanner input = new Scanner(System.in);
+System.out.print("시간을 입력하세요 :");
+hours= input.nextInt();
+if(hours>0){
+    pay = hours * 9000;
+    System.out.printf("임금은 %d입니다.\n" , pay);
+}
+else{
+    System.out.println("시간이 잘못 입력되었습니다.");
+}
+```
+
+printf는 안에 숫자를 넣을 때 사용.
+
+
 
 
 
