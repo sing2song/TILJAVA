@@ -174,7 +174,7 @@ public class Add{
 
 타입은 기본형 타입과 참조형으로 나뉘게 된다.
 
-참조형은 레퍼런스를 한번 더 해야한다. new를 통해서 생성하고 객체의 주소를 가리키고 있는 것!
+참조형은 레퍼런스를 한번 더 해야한다. new를 통해서 생성하고 객체의 주소를 가리키고 있는 것! class같은 것들로 선언 되어있음
 
 
 
@@ -195,6 +195,38 @@ float (4byte)
 double (8byte) - java의 기본 실수형
 
 boolean (1byte) -(0:False / 1:True)
+
+
+
+**상수**
+
+메모리에 할당되어 있는 동안 같은 값을 유지하는 변수이다.
+
+`final` 키워드로 선언한다.
+
+항상 선언 시 초기화를 해주어야 하며, 값을 변경 할 수 없다
+
+
+
+형변환
+
+업캐스팅은 자동으로 되지만 다운캐스팅은 불가능하다.
+
+upcasting(작은->큰) / downcasting(큰->작은)
+
+```java
+int a = 10;
+double b;
+b = a; System.out.println(b); //10.0 upcasting
+//a = b; //error System.out.println(a);
+a = (int)b; System.out.println(a); //10 downcasting
+b = 10 / 3; System.out.println(b); //3.0
+b = (double)10 / 3; System.out.println(b); //3.333
+b = (int)10.2 + (int)3.3; System.out.println(b); //13.0
+b = (int)10.2 + 3.3; System.out.println(b); //13.3
+```
+
+
 
 
 
