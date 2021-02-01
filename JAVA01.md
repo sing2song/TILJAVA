@@ -1,5 +1,81 @@
 # JAVA
 
+## 이클립스 설치
+
+이클립스는 따로 추가적인 설치란이 없기때문에 홈페이지가서 다운받고 실행만하면된다!
+
+또는 안내책자의 390페이지부터 보면 된다!
+
+![image-20210201120719952](md-images/image-20210201120719952.png)위의 걸로 설치하려했는데 용량이 커서 느려져서 기본 으로 설치함
+
+![image-20210201121120332](md-images/image-20210201121120332.png)
+
+```bash
+C:\Users\32153256\eclipse\java-2020-12\eclipse
+
+```
+
+![image-20210201121326642](md-images/image-20210201121326642.png)
+
+바탕화면에도 설치해뒀음! 
+
+### 작업경로를 설정하자!!
+
+```bash
+C:\Users\32153256\Desktop\ssong\soltlux\TILJAVA\workspace
+```
+
+난 여기에다가 만들것!!
+
+New - Java project
+
+![image-20210201123422412](md-images/image-20210201123422412.png)
+
+이렇게 실습 프로젝트와 파일 생성!
+
+간단하게 테스트해보자!
+
+```java
+public class Hello {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Hello World");
+	}
+
+}
+```
+
+실행할려면 Run (ctrl+F11) 누르면 되는데 레노버는 F11인식할려면 Fn버튼도 같이 눌러줘야한다.........................ㅜㅜㅜㅜㅜㅜㅜㅜ
+
+암튼 실행하고 나면 생성된 것을 확인 할 수 있다!! 
+
+![image-20210201124126839](md-images/image-20210201124126839.png)
+
+![image-20210201124116707](md-images/image-20210201124116707.png)
+
+
+
+
+
+
+
+
+
+### 인코딩
+
+windows - preferences - encoding쳐보기 => UTF-8로 설정
+
+![image-20210201122633986](md-images/image-20210201122633986.png)
+
+preferences - JAVA - Installed JREs 잘 설치되어있는지 확인 - 위에서 설치했던 jre 1.8로 변경해준다
+
+![image-20210201124312482](md-images/image-20210201124312482.png)
+
+
+
+
+
 ## 자바 언어 소개
 
 > 현재 JAVA 상태 체크하기
@@ -208,7 +284,7 @@ boolean (1byte) -(0:False / 1:True)
 
 
 
-형변환
+**형변환**
 
 업캐스팅은 자동으로 되지만 다운캐스팅은 불가능하다.
 
@@ -225,83 +301,6 @@ b = (double)10 / 3; System.out.println(b); //3.333 downcasting
 b = (int)10.2 + (int)3.3; System.out.println(b); //13.0 downcasting
 b = (int)10.2 + 3.3; System.out.println(b); //13.3 downcasting
 ```
-
-
-
-
-
-## 이클립스 설치
-
-이클립스는 따로 추가적인 설치란이 없기때문에 홈페이지가서 다운받고 실행만하면된다!
-
-또는 안내책자의 390페이지부터 보면 된다!
-
-![image-20210201120719952](md-images/image-20210201120719952.png)위의 걸로 설치하려했는데 용량이 커서 느려져서 기본 으로 설치함
-
-![image-20210201121120332](md-images/image-20210201121120332.png)
-
-```bash
-C:\Users\32153256\eclipse\java-2020-12\eclipse
-
-```
-
-![image-20210201121326642](md-images/image-20210201121326642.png)
-
-바탕화면에도 설치해뒀음! 
-
-### 작업경로를 설정하자!!
-
-```bash
-C:\Users\32153256\Desktop\ssong\soltlux\TILJAVA\workspace
-```
-
-난 여기에다가 만들것!!
-
-New - Java project
-
-![image-20210201123422412](md-images/image-20210201123422412.png)
-
-이렇게 실습 프로젝트와 파일 생성!
-
-간단하게 테스트해보자!
-
-```java
-
-public class Hello {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hello World");
-	}
-
-}
-```
-
-실행할려면 Run (ctrl+F11) 누르면 되는데 레노버는 F11인식할려면 Fn버튼도 같이 눌러줘야한다.........................ㅜㅜㅜㅜㅜㅜㅜㅜ
-
-암튼 실행하고 나면 생성된 것을 확인 할 수 있다!! 
-
-![image-20210201124126839](md-images/image-20210201124126839.png)
-
-![image-20210201124116707](md-images/image-20210201124116707.png)
-
-
-
-
-
-
-
-
-
-### 인코딩
-
-windows - preferences - encoding쳐보기 => UTF-8로 설정
-
-![image-20210201122633986](md-images/image-20210201122633986.png)
-
-preferences - JAVA - Installed JREs 잘 설치되어있는지 확인 - 위에서 설치했던 jre 1.8로 변경해준다
-
-![image-20210201124312482](md-images/image-20210201124312482.png)
 
 
 
@@ -341,11 +340,11 @@ System.out.println(a==c);//True =>주소가 같다
 System.out.println(a.equals(c));//True =>문자열이같다
 ```
 
-같은 string을 주게 되면 같은 주소를 가르키게 된다!! 그래서 a==c가 True
+**같은 string을 주게 되면 같은 주소를 가르키게 된다!! 그래서 a==c가 True**
 
 
 
-String 인스턴스가 갖는 문자열은 읽어올 수 있고 수정이 불가능하다.
+String 인스턴스가 갖는 문자열은 읽어올 수 있고 **수정이 불가능하다.**
 
 > ex
 
@@ -389,6 +388,8 @@ System.out.println(ssn.length());
 
 ## 제어문(분기문, 반복문)
 
+### if
+
 ```java
 int pay;
 int hours;
@@ -405,6 +406,99 @@ else{
 ```
 
 printf는 안에 숫자를 넣을 때 사용.
+
+
+
+### switch-case
+
+```java
+	public static void main( String args[] ) {
+		f(6);//static으로 올렸기때문에 바로 호출가능
+        
+        //static이 아니였다면 이렇게 객체 생성 후에 호출해야한다!
+        IfStmt ifs = new IfStmt();
+		ifs.f(6);
+        
+        
+	}
+	static void f(int i) {
+		if (i%2 == 0) System.out.println("짝수");
+		if (i%3 == 0) {
+			System.out.println("3의 배수");
+			System.out.println("i = " + i);
+		}
+		if (i%5 == 0) System.out.println("5의 배수");
+		else if (i % 5 == 1) System.out.println("5의 배수 + 1");
+		else System.out.println("5의 배수 + 2 혹은 3 혹은 4");
+	}
+```
+
+static을 사용했기때문에 f함수 호출이 바로 가능하다.
+
+
+
+### for문
+
+![image-20210201173004475](md-images/image-20210201173004475.png)
+
+> 별찍기
+
+```java
+int line=4;
+		for(int i=0; i<line; i++) {
+			for(int j=line-i; j>0; j--) {
+				System.out.print(" ");
+			}
+			for(int k=0; k<i*2+1; k++){
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+```
+
+
+
+#### for each문
+
+```java
+public class Test1{
+    public static void main(String[] args) {
+        String mclass[] = {"비트","자바","수업"};
+        for(String s : mclass)
+        {
+        	System.out.println(s);//비트 자바 수업
+        }
+    }
+}
+
+
+public class Test2{
+    public static void main(String[] args) {
+        String mclass[] = {"비트","자바","수업"};
+        for(int i =0;i<mclass.length;i++)
+        {
+        	System.out.println(mclass[i]);
+        }
+    }
+}
+
+
+import java.util.ArrayList;
+public class Test3{
+    public static void main(String[] args) {
+        ArrayList<Integer> mclass = new ArrayList<Integer>();
+        mclass.add(new Integer(2015));
+        mclass.add(new Integer(11));
+        mclass.add(new Integer(18));
+        for(Integer i :mclass)
+        {
+        	System.out.println(i);
+        }
+    }
+}
+```
+
+
 
 
 
