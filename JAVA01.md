@@ -76,7 +76,7 @@ preferences - JAVA - Installed JREs 잘 설치되어있는지 확인 - 위에서
 
 
 
-## 자바 언어 소개
+## 01. 자바 언어 소개
 
 > 현재 JAVA 상태 체크하기
 
@@ -244,7 +244,7 @@ public class Add{
 
 
 
-## 타입과 변수
+## 02. 타입과 변수
 
 ![image-20210201141342840](md-images/image-20210201141342840.png)
 
@@ -306,7 +306,7 @@ b = (int)10.2 + 3.3; System.out.println(b); //13.3 downcasting
 
 
 
-## 연산자와 문자열
+## 03. 연산자와 문자열
 
 ![image-20210201145411008](md-images/image-20210201145411008.png)
 
@@ -386,7 +386,7 @@ System.out.println(ssn.length());
 
 
 
-## 제어문(분기문, 반복문)
+## 04. 제어문(분기문, 반복문)
 
 ### if
 
@@ -502,22 +502,3 @@ public class Test3{
 
 
 
-
-
-
-
-## 배열
-
-## Package
-
-## 객체지향 프로그래밍1
-
-## 객체지향 프로그래밍2
-
-## 내부클래스
-
-## Object 클래스
-
-## 제네릭과 컬렉션
-
-## Eclipse 설치
