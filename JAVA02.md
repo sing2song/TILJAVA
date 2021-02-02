@@ -165,7 +165,7 @@ int[][] score2= {
 
 
 
-## 객체지향 프로그래밍1
+## 객체지향 프로그래밍1(OOP)
 
 c는 절차지향 언어. 
 
@@ -197,6 +197,59 @@ java는 추상화시켜서 객체화하는 것.
 java의 디폴트레벨은 package레벨(생략가능) 같은 패키지 않에서만 사용가능.
 
 private(같은 class에서만)< public < protected (내 자식에게 준다)
+
+
+
+3. 상속
+
+기존의 코드(부모의 코드)를 기반으로 새로운 코드(자식의 코드)를 생성한다.
+
+main 메소드가 있는 클래스를 **드라이버 클래스**라고한다.
+
+```java
+class Person{
+    String name;
+    int age;
+    String job;
+    public Person(String a, int b){
+        this.name = a;
+        this.age = b;
+	}
+}
+
+class Student extends Person{
+    public Student(String a, int b)
+    {
+        super(a,b);//super는 처음에 나와야한다.
+        this.job = "학생";
+    }
+    public void Behavior(){
+    	System.out.println(name +" "+ age + "세 " + job + " 행동: 과제중..");
+    } 
+}
+
+class Professor extends Person{
+    public Professor(String a, int b)
+    {
+        super(a,b);
+        this.job = "교수";
+    }
+    public void Behavior(){
+    	System.out.println(name +" "+ age + "세 " + job + " 행동: 과제내는중..");
+    }
+}
+public class test{
+    public static void main(String args[]){
+        //상속
+        Student student = new Student("문주영", 24);
+        Professor pofessor = new Professor("최세지", 42);
+        student.Behavior();
+        pofessor.Behavior();
+    }
+}
+```
+
+
 
 
 
