@@ -4,9 +4,9 @@ public class Person {
 	String name;
 	int age;
 	String job;
-	public Person(String name, int age) {
-		this.name=name;
-		this.age=age;
+	public Person(String a, int b) {
+		this.name=a;
+		this.age=b;
 	}
 	
 	public void Behavior() {

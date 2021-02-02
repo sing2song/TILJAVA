@@ -251,6 +251,216 @@ public class test{
 
 
 
+상속을 하게되면 호출하지 않아도 부모의 것이 먼저 호출 후 자식이 호출된다.
+
+```java
+class Shape{
+    public Shape(){ System.out.println("Shape 생성자()");}
+}
+
+class Rectangle extends Shape{
+    public Rectangle(){System.out.println("Rectangle 생성자()");}
+}
+
+public class Test{
+    public static void main(String[] args){
+        Rectangle r = new Rectangle();
+    }
+}
+```
+
+> 결과
+
+![image-20210202144917112](md-images/image-20210202144917112.png)
+
+
+
+### overriding(오버라이딩) vs overload(오버로딩)
+
+overriding : 메소드 재정의. 자식 클래스가 필요에 따라 상속된 메소드를 다시 정의하는 것. **동적바인딩.** 실행 시간에 오버라이딩 된 메소드 찾아 호출. 
+
+목적: 다형성 실현
+
+overload : 같은 함수이름으로 다른 형태. **정적바인딩.** 컴파일시에 메소드 중 호출되는 메소드 결정. 생성자 오버로딩도 있음.
+
+- 생성자 오버로드
+
+자신의 생성자를 표시할 때에는 `this()`를 사용한다.
+
+하나라도 매개변수가 있는 생성자가 있으면 디폴트생성자를 만들어줘야한다.
+
+```java
+public Account(){}//디폴트 생성자
+
+public Account(String no, String name){
+    this.accountNo=no;
+    his.owerName=name;
+}
+
+public Account(String no, String name, int bal){
+    this(no,name);
+    this.balance=bal;
+}
+```
+
+
+
+
+
+
+
+4. 다형성
+
+객체의 동작이 상황에 따라서 달라진다.
+
+이름이 같은 메소드를 호출해도 서로 다른 결과를 보인다.
+
+
+
+### 동적바인딩
+
+실행시간에 성격이 결정되는 것.
+
+```java
+Shape arrayOfShapes[] = new Shape[3];//객체 배열
+
+arrayOfShapes[0] = new Rectangle();
+arrayOfShapes[1] = new Triangle();
+arrayOfShapes[2] = new Circle();
+
+for(int i=0;i<arrayOfShapes.length;i++)
+	arrayOfShapes[i].draw();
+```
+
+
+
+### 정적바인딩
+
+컴파일러때 성격이 결정되는 것
+
+```java
+class OOP{
+    public void foo(int a){
+        System.out.println("숫자출력");
+        System.out.println(a);
+    }
+    public void foo(String a){
+    	System.out.println("문자출력"); System.out.println(a);
+    }
+}
+
+public class test {
+    public static void main(String arg[]){
+        OOP oop = new OOP();
+        oop.foo(1.0);////error!! 컴파일시 오류가 나는것을 확인!
+        System.out.println("");
+        oop.foo("Hello");
+    }
+}
+```
+
+
+
+
+
+### 클래스
+
+동일한 특징(속성,기능,관계)을 가진 일련의 객체들의 집합이다. 
+
+객체를 만들어내는 틀이다. 
+
+은행시스팀 코드
+
+```java
+package p147;
+
+public class Account {
+	private String accountNo;
+	private String ownerName;
+	private int balance;
+	
+	public Account(String accountNo,String ownerName, int balance) {
+		this.accountNo=accountNo;
+		this.ownerName=ownerName;
+		this.balance=balance;
+	}
+	
+	protected int deposit(int money) {
+		System.out.println("원래 잔액 : "+balance);
+		balance+=money;
+		System.out.println("입금 후 잔액 : "+balance);
+		return balance;
+	}
+	
+	protected int withdraw(int money) {
+		System.out.println("원래 잔액 : "+balance);		
+		if(balance>money) {
+			balance-=money;
+			System.out.println("출금 후 잔액:  "+balance);
+		}else {
+			System.out.println("잔액이 부족합니다.");
+		}
+		return balance;
+	}
+	
+	void tranfer(int money,Account user) {
+		if(balance>money) {
+			this.balance-=money;
+			user.deposit(money);
+		}else {
+			System.out.println("잔액이 부족합니다.");
+		}
+		
+	}
+	
+	@Override
+	public String toString() {
+		return "잔액: "+balance;		
+	}
+	
+}
+/////////////////////////////////////////////////////
+public class Object {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Account myAccount1 = new Account("12345","철수",10000);
+		Account myAccount2 = new Account("987","adam",20000);
+		
+		myAccount1.deposit(10000);
+		System.out.println("myAccount1의 "+myAccount1);
+		
+		myAccount2.deposit(30000);
+		myAccount2.withdraw(5000);
+		System.out.println("myAccount2의 "+myAccount2);
+		
+		myAccount1.tranfer(4000, myAccount2);
+		System.out.println("myAccount1의 "+myAccount1);
+	}
+
+}
+```
+
+
+
+객체를 참조할 수 있는 클래스의 참조변수를 선언한다.
+
+new키워드로 객체를 생성하고 참조값을 반환받는다.
+
+객체는 생성이 되어 Heap메모리에 저장되며 프로그램이 끝나면 메모리가 반환된다.
+
+
+
+
+
+
+
+### 인스턴스
+
+클래스는 도장
+
+도장이 생기는 모양은 인스턴스
+
 
 
 
