@@ -500,5 +500,89 @@ public class Test3{
 
 
 
+### while문
+
+조건을 먼저 검사하여 true 인 동안만 문장들을 실행하는 진입 조건형 루프이다.
+
+
+
+#### do-while문
+
+일단 루프 내의 문장들을 한번 실행 한 후 조건을 검사하여 false가 될 때까지 루프내의 문장 들을 반복 실행하는 탈출 조건형 루프.
+
+조건을 생각하지 않고 적어도 **한번**은 문장이 수행된다.
+
+```java
+int j=1;
+Scanner sc = new Scanner(System.in);
+System.out.println("몇 단 :");
+i=sc.nextInt();
+do {
+    System.out.println(i+"*"+j+"="+i*j);
+    j++;
+}while(j<=9);
+```
+
+
+
+# 📌JDK 8 API
+
+https://docs.oracle.com/javase/8/docs/api/
+
+java.lang 패키지는 기본 패키지로 따로 import 하지 않아도 된다. (ex.String)
+
+java.util 패키지중 Scanner 에서 next()함수 단어하나하나를 받을 때. 사용
+
+![image-20210202093302620](md-images/image-20210202093302620.png)
+
+
+
+### break & continue문
+
+break : 자신과 제일 가까운 반복문 1개만 탈출하는 것.
+
+continue : 그 뒤의 문장은 무시하고 조건문으로 돌아가는 것.
+
+```java
+int sum = 0;
+int i =0;
+while(true){
+    if(sum>100)
+        break;
+    i++;
+    sum +=i;
+}
+System.out.println("i = :"+i);
+System.out.println("sum = :"+sum);
+
+for(i =0;i<=10; i++)
+{
+    if(i%3 ==0)
+        continue;
+    System.out.println(i);
+}
+```
+
+
+
+#### 이름이 붙은 반복문
+
+반복문 앞에 이름을 붙이고 break문과 continue문에 이름을 지정하여 하나 이상의 반 복문을 탈출하거나 반복을 건너 뛸 수 있다.
+
+```java
+public static void main(String[] args) {
+		Loops:for(int i=2;i<=9;i++) {
+			for(int j=1;j<=9;j++) {
+				if(j==5)
+					break Loops;
+				//break;-j for문의 끝
+				//continue Loops; - 지금 여기선 break랑 같은 효과
+				//continue;
+				System.out.println(i+"*"+j+"="+i*j);
+			}
+		}
+	}
+```
+
 
 
