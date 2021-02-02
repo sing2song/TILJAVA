@@ -190,9 +190,13 @@ java는 추상화시켜서 객체화하는 것.
 
 데이터를 감추고 외부와는 메소드를 통해 접근한다. (정보은닉)
 
+
+
+### 접근한정자
+
 java의 디폴트레벨은 package레벨(생략가능) 같은 패키지 않에서만 사용가능.
 
-public < protected (내 자식에게 준다)
+private(같은 class에서만)< public < protected (내 자식에게 준다)
 
 
 
