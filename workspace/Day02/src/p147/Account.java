@@ -4,12 +4,18 @@ public class Account {
 	private String accountNo;
 	private String ownerName;
 	private int balance;
+	private static int cnt;
+	
+	public Account() {cnt++;}
 	
 	public Account(String accountNo,String ownerName, int balance) {
 		this.accountNo=accountNo;
 		this.ownerName=ownerName;
 		this.balance=balance;
+		cnt++;
 	}
+	
+	public int getCnt() {return cnt;}
 	
 	protected int deposit(int money) {
 		System.out.println("원래 잔액 : "+balance);

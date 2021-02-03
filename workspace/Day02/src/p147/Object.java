@@ -16,6 +16,9 @@ public class Object {
 		
 		myAccount1.tranfer(4000, myAccount2);
 		System.out.println("myAccount1의 "+myAccount1);
+		
+		System.out.println(myAccount1.getCnt());
+		
 	}
 
 }
