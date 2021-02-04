@@ -107,7 +107,7 @@ print(list1,list2);
 
 `lastIndexOf()` : 특정한 데이터가 저장된 위치를 반환(뒤에서부터 검색)
 
-`asList(new String[size])` : 일반적인 배열을 리스트로 바꿔주기
+`Arrays.asList(new String[size])` : 일반적인 배열을 리스트로 바꿔주기
 
 
 
@@ -196,7 +196,127 @@ data와 node가 있는 구조. node가 이전과 다음을 가르킨다.
 
 ![image-20210204140417761](md-images/image-20210204140417761.png)
 
+`Arrays.asList(new String[size])` : 일반적인 배열을 리스트로 바꿔주기
 
+
+
+
+
+#### SET
+
+집합은 원소의 중복을 허용하지 않는다.
+
+순서가 없다!
+
+
+
+- HashSet 
+
+  원소를 저장하기때문에 성능면에서 가장 우수. 순서가 일정하지 않은 단점.
+
+- TreeSet
+
+  레드-블랙 트리에 원소를 저장한다. 값에 따라서 순서가 결정되지만 HashSet보단 느리다.
+
+- LinkedHashSet
+
+  해쉬 테이블과 연결리스트를 결합한 것으로 원소들이 삽입된 순서 로 저장된다. HashSet의 순서가 일정하지 않은 문제점을 보완한 것이다.
+
+
+
+**해쉬 테이블**
+
+연결리스트의 배열로 구현되어있다.
+
+문자열을 해쉬 함수에 입력하면 특정값(key)로 변환됨.
+
+hash 알고리즘으로 나온 결과에 맞게 테이블에 저장. 
+
+그 역할을 hash function이 한다. 
+
+![image-20210204142401581](md-images/image-20210204142401581.png)
+
+
+
+`retainAll()` : boolean으로 return한다. 교집합을 계산한다. 포함되어있지 않은 것은 제거한다.
+
+```java
+Set<Integer> s1 = new HashSet<>(Arrays.asList(1,2,3,4,5,7,9));
+Set<Integer> s2 = new HashSet<>(Arrays.asList(2,4,6,8));
+
+s1.retainAll(s2);
+System.out.println(s1);
+```
+
+>결과
+
+[2, 4]
+
+
+
+##### HashSet
+
+`add()`: boolean값을 return한다!!! 이를 이용해서 다음문제를 풀어보자
+
+> Q. HashSet으로 과일리스트를 만든 후 중복된 단어와 중복되지 않은 단어의 수와 과일리스트를 출력.
+
+```java
+public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    HashSet<String> set = new HashSet();
+    String[] str = {"사과","사과","바나나","토마토"};
+    int cnt=0;
+    int overcnt=0;//중복된수
+    for(String s:str) {
+        if(set.add(s))cnt++;
+        else overcnt++;			
+    }
+
+    System.out.println("중복되지 않은 수="+cnt+", 중복된 수="+overcnt);
+}
+
+```
+
+
+
+
+
+##### TreeSet
+
+부모노드인 root로부터 시작해서 자식들을 이어서 생성한다.
+
+특정 클래스를 sort하고 싶다면 Comparable 인터페이스를 해야한다!
+
+
+
+
+
+##### Comparable인터페이스 구현
+
+compareTo 를 오버라이딩 해줘야한다. return은 int!
+
+뒤에 있는 것이 더 크면 양수를, 같으면 0, 작으면 음수를 return한다.
+
+```java
+//문자열 비교일 때
+  @Override
+  public int compareTo(Member m1) {
+    return (this.name.compareTo(m1.name));
+  }    // m1의 name 이 크면 양수, 같으면0, 작으면 음수를 리턴
+   
+  // 숫자 비교 - 오름차순
+ @Override
+  public int compareTo(Member m1) {
+    return (this.id - m1.id);
+  }
+
+  // 숫자 비교 - 내림차순
+ @Override
+  public int compareTo(Member m1) {
+    return (m1.id - this.id);
+  }
+
+```
 
 
 
