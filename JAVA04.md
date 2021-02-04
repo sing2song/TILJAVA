@@ -64,3 +64,47 @@ vector는 가변크기.
 #### Vector 클래스
 
 java.util 패키지에 있는 컬렉션의 일종으로 가변 크기의 배열을 구현하고 있다. vector의 크기는 자동으로 구현이 된다.
+
+JAVA03.md에도 해당 내용 정리해둠.
+
+
+
+`trimToSize()` : tirmToSize()메소드는 빈공간을 없앤다.
+
+`ensureCapacity(숫자)`: 숫자이상만큼 버퍼의 크기를 늘린다.
+
+```java
+Vector v = new Vector(10);
+v.add("10");
+v.add("9");
+v.add("8");
+v.add("7");
+print(v);
+
+v.trimToSize(); // tirmToSize()메소드는 빈공간을 없앤다.
+System.out.println("===[빈공간을 없앤 후]===");
+print(v);
+
+v.ensureCapacity(6); //ensureCapacity(6)은 버퍼의 크기를 6이상으로 늘린다.
+System.out.println("===[버퍼크기6이상 늘린 후]===");
+print(v);
+v.clear();
+System.out.println("===[벡터를 지운 후]===");
+print(v);
+
+//print(Vector v)는 만든함수
+public static void print(Vector v) {
+    System.out.println(v);
+    System.out.println("size : " + v.size());
+    System.out.println("capacity() : " + v.capacity());
+
+```
+
+> 결과
+
+![image-20210204121931365](md-images/image-20210204121931365.png)
+
+
+
+
+
