@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class ArrayListTest {
 	private static ArrayList<String> arr = new ArrayList();
 	private static Scanner sc = new Scanner(System.in);
-	static Iterator<String> iter = arr.iterator();
 	
 	public void insert() {
 		String name;
@@ -35,13 +34,7 @@ public class ArrayListTest {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayListTest alt = new ArrayListTest();
-		
-		while(iter.hasNext()){ //얘는 true, false 반환, 있으면 true, 없으면 false 이제 이정도 짬은 되겠죠?
-
-			System.out.println(iter.next());
-
-		}
+		ArrayListTest alt = new ArrayListTest();		
 		for(int i=0;i<5;i++)
 			alt.insert();
 		
