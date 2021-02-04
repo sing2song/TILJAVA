@@ -195,16 +195,24 @@ public final boolean B(){// 상속불가
 
 ![image-20210203115249959](md-images/image-20210203115249959.png)
 
+clone() 재정의 예시
+
+깊은 복사(참조갑의 복사가 아닌 객체 자체를 복사하는 것)를 하기 위해 재정의한다.
+
+```java
+public Object Clone() {
+    MyClass a = new MyClass();
+    a.Set_Name(this.name);
+    a.Set_Age(this.age);
+    return a; // 생성된 객체를 리턴
+}
+```
 
 
 
 
 
 
-## 제네릭과 컬렉션
 
-**Generic은 클래스 내부에서 지정하는 것이 아닌 외부에서 사용자에 의해 지정되는 것을 의미합니**다.
 
-한마디로 특정 타입을 **미리 지정해주는 것이 아닌 필요에 의해 지정**할 수 있도록 하는 일반(Generic) 타입입니다.
 
-출처: https://yoon-dailylife.tistory.com/7 [알면 쓸모있는 개발 지식]
