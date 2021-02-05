@@ -30,21 +30,9 @@ public class Member implements Comparable<Member>{
 	}
 	@Override
 	public int compareTo(Member o) {
-//		return this.getName().compareTo(o.getName());
+//		return this.getName().compareTo(o.getName());//name으로 비교할 때
 		return this.number - o.number;
 	} 
-	/*
-	public boolean equals(Object obj) {
-		if(obj instanceof Member) {
-			Member temp = (Member)obj;
-			return name==temp.name;
-		}
-		return false;
-	}
 	
-	public int hashCode() {
-		return ((Integer)number).hashCode();
-	}
-	*/
 
 }

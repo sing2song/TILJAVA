@@ -88,3 +88,86 @@ for (Map.Entry<String, String> entry : map.entrySet()) {
 }
 ```
 
+
+
+
+
+### Collenctions 클래스
+
+여러 유용한 알고리즘을 구현한 메소드들을 제공한다.
+
+중요한 알고리즘은 정렬(Sorting), 섞기(Shuffling), 탐색(Searching)이 있다.
+
+제네릭 기술을 이용하여 이 메소드들이 작성되었고 정적인 형태로 되어 있다.
+
+
+
+#### ComapreTo함수❗
+
+- sort를 사용하려면 CompareTo메서드를 재정의해줘야한다.
+
+```java
+class Grade implements Comparable<Grade> { //Comparable 인터페이스는 compareTo() 라는 메소드를 가진다.
+    int number;
+    String grade;
+    public Grade(int number,String grade) {
+        this.number = number;
+        this.grade = grade;
+    }
+    public String toString() {
+    	return grade;
+    }
+    public int compareTo(Grade g) { // 객체를 서로 비교하기 위한 메소드이다.
+        //1)
+    	return number – g.number;
+        //2)
+        return this.getGrade().compareTo(g.getGrade());	//grade로 비교
+
+    }
+}
+
+public class SortTest {
+    public static void main(String[] args) {
+        Grade array[] = {
+            new Grade(20130001, “A+”),
+            new Grade(20130002, “C+”),
+            new Grade(20130003, “B+”),
+            new Grade(20130004, “D”)
+        };
+        List<Grade> list = Arrays.asList(array);
+        Collections.sort(list); // 정렬하는 도중에 Grade클래스의 compareTo() 메소드를 사용한다.
+        System.out.println(list);
+    }
+}
+```
+
+> 결과
+
+[A+, C+, B+, D]
+
+
+
+
+
+#### 섞기 Shuffling
+
+정렬(Sorting)의 반대로 동작하여 리스트의 정렬을 파괴하고 순서를 랜덤 하게 한다.
+
+
+
+#### 탐색 Searching
+
+이진탐색트리
+
+
+
+## 내부클래스(p245)
+
+클래스 안에 클래스가 있는 것. 정보은닉. 다른 클래스에서는 내부에 있는 클래스를 사용할 수 없다!!
+
+
+
+## Wrapper클래스(p258)
+
+기초 자료형의 효율적인 관리와 은닉화, 객체화를 위해 만들어진 대체 클래스이다.
+

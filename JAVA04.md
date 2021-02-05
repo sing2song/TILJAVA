@@ -335,13 +335,9 @@ equals만 재정의해서 어떤 두 객체가 같다고 했는데 hash를 사�
 
 
 
+둘의 차이를 비교한 좋은 글!! 결과적으론 String만 비교하는 것이 아니라면 오버라이딩 해줘야한다.
 
-
-출처: https://jeong-pro.tistory.com/172 [기본기를 쌓는 정아마추어 코딩블로그]
-
-출처: https://jeong-pro.tistory.com/172 [기본기를 쌓는 정아마추어 코딩블로그]
-
-
+http://blog.naver.com/PostView.nhn?blogId=travelmaps&logNo=220931531769&redirect=Dlog&widgetTypeCall=true
 
 
 
