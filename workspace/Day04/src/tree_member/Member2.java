@@ -30,7 +30,7 @@ class Member2 implements Comparable<Member2>{
 
 	@Override
 	public int compareTo(Member2 o) {
-		return  this.name.compareTo(o.getName());
+		return  this.id.compareTo(o.getId());
 	}
 }
 

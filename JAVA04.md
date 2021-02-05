@@ -208,6 +208,8 @@ data와 node가 있는 구조. node가 이전과 다음을 가르킨다.
 
 순서가 없다!
 
+equals()함수를 돌려서 중복을 거른다!! - **기본적으로 String기준으로 돌린다.**
+
 
 
 - HashSet 
@@ -221,6 +223,8 @@ data와 node가 있는 구조. node가 이전과 다음을 가르킨다.
 - LinkedHashSet
 
   해쉬 테이블과 연결리스트를 결합한 것으로 원소들이 삽입된 순서 로 저장된다. HashSet의 순서가 일정하지 않은 문제점을 보완한 것이다.
+
+속도 순서는 해쉬<링크트<트리 순으로 트리가 제일 시간이 걸린다! 이전의 데이터와 비교하며 넣기 때문이다!
 
 
 
@@ -279,6 +283,66 @@ public static void main(String[] args) {
 
 
 
+- String은 알아서 비교를 해주기 때문에 중복을 포함하지 않는다!!!
+
+객체를 비교할 때, 비교하려는 대상이 String으로만 되어있으면 따로 `equals()`를 오버라이딩하지 않아도 된다!
+
+```java
+HashSet set = new HashSet();
+
+set.add("dog");
+set.add("dog");
+System.out.println(set);
+```
+
+> 결과
+
+[dog]
+
+
+
+- 객체를 비교한다면??
+
+```java
+Person p3 = new Person("kim",10);
+Person p4 = new Person("kim",10);
+System.out.println(p3.equals(p4));//false
+```
+
+String만 있는 것이 아니기 때문에 equals시에 false값이 나온다.
+
+```java
+set.add(new Person("kim",10));
+set.add(new Person("kim",10));
+set.add(new Person("kim",20));
+System.out.println(set);//[kim, 20, abc, kim, 10, kim, 10, dog]
+
+set.add(new Person("lee",30));
+set.add(new Person("lee",30));
+System.out.println(set);//[kim, 20, abc, lee, 30, kim, 10, kim, 10, lee, 30, dog] => 순서는 뒤죽박죽
+
+```
+
+
+
+###### hashCode() 와 equals()
+
+equals로 같은 객체라면 hashCode도 같은 값이여야한다!
+
+equals만 재정의해서 어떤 두 객체가 같다고 했는데 hash를 사용하는 Collection(HashSet, HashMap, ...)에 넣을 때는 같다고 생각하지 않아서 문제가 생길 수 있다. 따라서 equals와 hashcode는 반드시 함께 재정의해야 한다.
+
+**하지만 반대로 hashCode가 같은 값이더라도 equals로 같은 객체가 아닐 수 있다는 것을 유의해야 한다.**
+
+
+
+
+
+출처: https://jeong-pro.tistory.com/172 [기본기를 쌓는 정아마추어 코딩블로그]
+
+출처: https://jeong-pro.tistory.com/172 [기본기를 쌓는 정아마추어 코딩블로그]
+
+
+
 
 
 ##### TreeSet
@@ -296,6 +360,8 @@ public static void main(String[] args) {
 compareTo 를 오버라이딩 해줘야한다. return은 int!
 
 뒤에 있는 것이 더 크면 양수를, 같으면 0, 작으면 음수를 return한다.
+
+> 예시
 
 ```java
 //문자열 비교일 때

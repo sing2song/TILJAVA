@@ -1,0 +1,28 @@
+Map<String, String> map = new HashMap<String, String>();
+map.put("1", ＂길동＂);
+map.put(＂2＂, ＂동희＂);
+map.put(＂3＂, ＂순희");
+ 
+** 저장된 전체 객체 를 대상으로 하나씩 얻어 오는 방법
+
+1) keySet()메소드로 Set컬렉션을 얻은 후, 반복자로 하나씩 get() 통해 값 가져온다.
+Set<String> keys = map.keySet();
+Iterator<String> it = keys.iterator();
+while (it.hasNext()) {
+    String key = it.next();
+    System.out.println(String.format("키 : %s, 값 : %s", key, map.get(key)));
+}
+
+for (String key : map.keySet()) {
+    System.out.println(String.format("키 : %s, 값 : %s", key, map.get(key)));
+}
+
+2) entrySet()  메소드로 모든 Map.Entry 를 Set 컬렉션으로 얻은 후, 반복자를 통해 Map.Entry를 하나씩 얻고 getKey()와 getValue() 메소드를 이용해 키와 값을 얻는다. 
+Set<Map.Entry<K, V>> entrySet = map.entrySet();      Iterator<Map.Entry<K,V>> entryIterator = entrySet.iterator();      while (entryIterator.hasNext()) {          Map.Entry<K, V> entry = entryIterator.next();          K key = enry.getKey();          V value = entry.getValue();      }
+
+
+for (Map.Entry<String, String> entry : map.entrySet()) {
+    System.out.println(String.format("키 : %s, 값 : %s", entry.getKey(), entry.getValue()));
+}
+
+
