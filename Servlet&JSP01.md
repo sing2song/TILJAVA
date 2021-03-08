@@ -70,7 +70,7 @@ EJB Container = **E**nterprise **J**ava **B**ean Servlet컨테이너와 EJB컨�
 
 
 
-# 이클립스설치
+# 이클립스설치 및 설정
 
 ![image-20210308115049172](md-images/image-20210308115049172.png)
 
@@ -116,14 +116,242 @@ window탭에 show view를 통해서 Navigator와 package Exploer를 추가해뒀
 
 
 
+## 프로젝트 생성
+
+
+
 4. project 종류
 
-   eclipse native project(이클립스에서만 쓸 수 있는 프로젝트, intellJ가면 다 깨짐) - java,dynamic, web
+   **eclipse native java project**(이클립스에서만 쓸 수 있는 프로젝트, intellJ가면 다 깨짐) - java,dynamic, web => 런타임환경이 java
+
+   **eclipse native dynamic web project** => 런타임 환경이 Tomcat
+
+   
 
    4.1 java project를 만들어보자. 
 
    new - Project - Java Project - 'hello world' 로 이름을 만들어줌. - 뭐 create하는거 안함! - open perspective 누름!
 
+   
+
    4.2 호환성 있는 표준 project => Maven, gradle
 
    maven, gradle : build Tools
+
+   설정 파일 : pom.xml => jar, war파일설정, 위치를 넣음
+   
+   mvn clean package => pom.xml을 읽어서 반영.
+   
+   
+   
+   native로는 만들지말기....다 깨지기때문! 이번에는 확인을 위해 실행
+   
+   
+
+### eclipse native project
+
+5. 패키지를 만들어서 클래스를 만들어보자.
+
+![image-20210308121946180](md-images/image-20210308121946180.png)
+
+패키지는 물리적으로는 **폴더의 형식.**
+
+src
+
+|---com
+
+​	|---soltlux
+
+​		|---Hellworld.java
+
+bin(컴파일된것)
+
+|---com
+
+​	|---soltlux
+
+​		|---Hellworld.class
+
+classpath : bin이다!
+
+```java
+java -cp . com.soltlux.Hellworld //현재 위치에서 클래스를 찾으라는 것
+```
+
+
+
+### dynamic web project
+
+#### Web Application Runtime(톰캣 서버 설정)
+
+https://tomcat.apache.org/download-80.cgi#8.5.63
+
+![image-20210308123035696](md-images/image-20210308123035696.png)
+
+1. zip폴더를 받아두자. 9버전을 써도 되지만 안전버전인 8.5를 받았다.
+
+2. 압축을 푼 폴더를 해당 폴더에 복사해뒀다.(한눈에 보기 쉽게하기위해!)
+
+![image-20210308123334155](md-images/image-20210308123334155.png)
+
+
+
+3. window탭에 preferences에 server 탭에서 runtime Environmet에서 위에서 받은 8.5설정으로 맞춰준다!!
+
+![image-20210308123520639](md-images/image-20210308123520639.png)
+
+
+
+4. window탭 -  show veiw - Server추가해서 아래처럼 서버를 생성해준다.
+
+![image-20210308123628755](md-images/image-20210308123628755.png)
+
+
+
+
+
+5. 실행하면 빨간줄과 함께 돌아가야하는데!!!!!!!!!!!!! 나는 포트 충돌이 났다!!!!!!!!
+
+>해결
+
+![image-20210308134924183](md-images/image-20210308134924183.png)
+
+나는 하도 충돌이나서 서버포트 8004와 8070으로 만들었다.
+
+
+
+6. 서버로 페이지를 띄울수있는지 확인해보자
+
+file - new - dynamic web project - helloweb이름으로 프로젝트 생성
+
+WebContent 안에 hello.html를 만들어서 글을 써보자.
+
+서버를 키기 전에 우클릭후 add and remove 로 방금 만든 프로젝트를 추가해준다. 
+
+![image-20210308135704264](md-images/image-20210308135704264.png)
+
+
+
+7. 서버 실행!!!!
+
+   제대로 돌아가는거 확인 후 방금 만든 url로 들어갔을 때 제대로 뜨면 성공!!!
+
+   http://localhost:8070/helloweb/hello.html
+
+
+
+## Git(버전관리)
+
+리눅스에서는 리눅스용 maven과 git을 설치해야한다.
+
+tomcat설치 폴더 webapps폴더 안에 war파일을 넣으면 된다.
+
+![image-20210308142042142](md-images/image-20210308142042142.png)
+
+war파일을 인지하고 tomcat이 읽어서 build하게 된다.
+
+![image-20210308142910849](md-images/image-20210308142910849.png)
+
+
+
+
+
+
+
+## maven 프로젝트
+
+
+
+![image-20210308143930729](md-images/image-20210308143930729.png)
+
+
+
+![image-20210308143953361](md-images/image-20210308143953361.png)
+
+
+
+![image-20210308144132584](md-images/image-20210308144132584.png)
+
+
+
+src폴더 밑에 생성되게 된다.
+
+![image-20210308144151981](md-images/image-20210308144151981.png)
+
+
+
+
+
+설정파일들은 resources폴더 안에 들어가있을것
+
+### pom.xml
+
+pom.xml을 설정해보자
+
+전체 선택후 ctrl+i를 하면 줄이 맞춰짐
+
+디펜던시를 추가하기.
+
+1. mysql 라이브러리의존을 위해 체크
+
+https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.6
+
+```xml
+<dependencies>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
+	</dependencies>
+```
+
+위의 내용을 pom.xml에 추가하면 maven을 통해 라이브러리를 받아오게 된다.
+
+library는 C:\Users\32153256\.m2\repository 이 곳에 저장되게 된다.
+
+
+
+2. build, properties 추가하기
+
+```xml
+<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+```
+
+
+
+3. Run해보자!
+
+maven도 실행할 수 있다! => build => jar파일을 만든다는 의미이다.
+
+만든 메이븐 프로젝트 우클릭
+
+![image-20210308150331761](md-images/image-20210308150331761.png)
+
+Apply후에 Run하면 빌드 성공확인!
+
+
+
+![image-20210308150413471](md-images/image-20210308150413471.png)
+
+
+
+target이라는 폴더 안에 jar로 만들어진것을 확인할 수 있다
+
+![image-20210308150557311](md-images/image-20210308150557311.png)
+
+
+
