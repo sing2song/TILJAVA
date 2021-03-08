@@ -355,3 +355,6 @@ target이라는 폴더 안에 jar로 만들어진것을 확인할 수 있다
 
 
 
+### web.xml생성
+
+프로젝트 우클릭 - JavaEE Tools - Generate Deployment Descriptor Stub 을 클릭하면 기본적인 webapp폴더안에 WEB-INF폴더와 web.xml이 생성된다.

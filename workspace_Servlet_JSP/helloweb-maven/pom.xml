@@ -17,7 +17,7 @@
 
 
 	<build>
-		<finalName>helloweb</finalName>
+		<finalName>helloweb-maven</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
 			<resource>
