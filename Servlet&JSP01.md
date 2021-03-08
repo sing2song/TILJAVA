@@ -358,3 +358,61 @@ target이라는 폴더 안에 jar로 만들어진것을 확인할 수 있다
 ### web.xml생성
 
 프로젝트 우클릭 - JavaEE Tools - Generate Deployment Descriptor Stub 을 클릭하면 기본적인 webapp폴더안에 WEB-INF폴더와 web.xml이 생성된다.
+
+
+
+## Github연결
+
+이클립스에서 연동하는 법을 알려줬는데...영상도 날라가고 많이 놓쳐서나는 그냥 Gitbash로 연결했다ㅠㅠ
+
+위치는 이곳.
+
+https://github.com/sing2song/helloworld-maven.git
+
+
+
+다시 연결했다!! 비밀번호가 틀렸어서 연결이 안됐던거다...
+
+해당 프로젝트 우클릭 - Team - commit누르면 git Staging이 뜬다.
+
+
+
+### 지우기
+
+1. 해당 프로젝트 우클릭 - Team - disconnect
+
+2. 폴더 지우기(체크하기!)
+
+![image-20210308163048104](md-images/image-20210308163048104.png)
+
+3. https://github.com/sing2song/helloworld-maven에 푸시해놨던 자료들을 copy해서 받아오자!
+
+![image-20210308163308412](md-images/image-20210308163308412.png)
+
+
+
+4. repository를 만들어주자
+
+![image-20210308163413564](md-images/image-20210308163413564.png)
+
+
+
+5. 다음 눌러서 위치를 조정해준다. 나는 아까있던 workspace위치로 옮겼음!
+
+![image-20210308163530152](md-images/image-20210308163530152.png)
+
+
+
+6. 확인! 
+
+![image-20210308163548019](md-images/image-20210308163548019.png)
+
+
+
+7.working set 우클릭 - import projects - finish
+
+![image-20210308163625296](md-images/image-20210308163625296.png)
+
+8. 들어와있는 것을 확인할 수 있다! 빨간줄뜨는건 우클릭 - Maven - update 로 반영했다.
+
+![image-20210308163718437](md-images/image-20210308163718437.png)
