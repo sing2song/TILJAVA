@@ -67,3 +67,63 @@ ex. Tomcat, WebLogic, WebSphere, Jeus
 EJB Container = **E**nterprise **J**ava **B**ean Servlet컨테이너와 EJB컨테이너를 관리하는 컨테이너, 총 2개가 필요하다. => WAS안에 들어있다. 하지만 Tomcat은 EJB를 다루는 기능이 없다.
 
 컨테이너에서 관리를 받을려면 인터페이스를 구현하고 상속을 받고 등 복잡하다.
+
+
+
+# 이클립스설치
+
+![image-20210308115049172](md-images/image-20210308115049172.png)
+
+https://www.eclipse.org/downloads/packages/ 
+
+1. 이 버전을 다운 받는다!
+
+2. 받은 폴더 압축을 푼뒤 soltlux폴더에 위치해뒀다! workspace는 이 위치에 생성하기로함
+
+![image-20210308120100660](md-images/image-20210308120100660.png)
+
+![image-20210308115713137](md-images/image-20210308115713137.png)
+
+3. eclipse 설정
+
+   3.1 encoding 
+
+   ![image-20210308120231237](md-images/image-20210308120231237.png)
+
+   ​	window탭 - preferences - encoding - General -ContentType - Text 하나씩 확인해보기=>UTF-8
+
+   workspace => Other=> UTF-8
+
+   전부 utf-8로 바꿨음
+
+   3.2 seplling 
+
+   체크 풀기!!
+
+![image-20210308120304691](md-images/image-20210308120304691.png)
+
+​	3.3 perspective : views들을 모아놓고 배치 시키는 것.
+
+
+
+java EE에서는 프로젝트를 논리적으로 보는 관점이 필요. 물리적으로 되어있는 것을 논리적으로 웹 어플리케이션에 맞게.
+
+
+
+![image-20210308120754855](md-images/image-20210308120754855.png)
+
+window탭에 show view를 통해서 Navigator와 package Exploer를 추가해뒀다.
+
+
+
+4. project 종류
+
+   eclipse native project(이클립스에서만 쓸 수 있는 프로젝트, intellJ가면 다 깨짐) - java,dynamic, web
+
+   4.1 java project를 만들어보자. 
+
+   new - Project - Java Project - 'hello world' 로 이름을 만들어줌. - 뭐 create하는거 안함! - open perspective 누름!
+
+   4.2 호환성 있는 표준 project => Maven, gradle
+
+   maven, gradle : build Tools
