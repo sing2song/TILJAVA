@@ -190,6 +190,8 @@ stateless connection : 어떠한 이전 요청과도 무관한 각각의 요청�
 
 정적인 웹페이지 => 웹프로그래밍이 아닌 퍼블리싱이라 한다.
 
+웹 페이지는 **HTML**이라는 표준 마크업랭귀지로 작성.
+
 Web Server도 프로세스, 실행되는 것들도 프로세스. 
 
 프로세스끼리 서로 통신할 때 쓰는 것이 pipe line.
@@ -206,4 +208,43 @@ CGI (Common Gateway Interface) : [웹 서버](https://ko.wikipedia.org/wiki/웹_
 
 
 
-요청이 들어오면 
+
+
+## 과제
+
+Q . 문자열로 클래스 만드는 법. new없이 만들기.
+
+```java
+String s = "MyCar";
+MyClass o = Class.forname(s);
+//MyClass o = new MyClass();
+```
+
+
+
+A. 
+
+```java
+public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    String s = "MyCar";
+    try {
+        Class<?> o = Class.forName(s);
+    } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+```
+
+
+
+**Class.forname** : 자바 리플렉션 API(Java Reflection API)의 일부. **구체적인 클래스의 타입을 알지 못해도 클래스의 변수 및 메소드 등에 접근하게 해주는 API**입니다.(동적 바인딩)
+
+
+
+
+
+## 소켓
+
+response에서 get write하면은 보조스트림에서 printwrite이 튀어나온다.
