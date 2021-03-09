@@ -35,6 +35,23 @@
 	<br>
 	<img src='images/jjangu.jpg' style="width:200px;"/>
 	<br>
-	<a href="index.jsp">메인으로 가기</a>
+	<a href="form.jsp">폼으로 가기</a>  
+	<a href="index.jsp?no=10">메인으로 가기</a>
+	
+	<p>
+	웹 표준은 어쩌구<br>
+	최근에 이 용어는 어쩌구
+	</p>
+	
+	<ul>
+		<li>aaaa</li>
+		<li>bbbbb</li>
+		<li>ccccc</li>
+	</ul>
+	<ol>
+		<li>aaaa</li>
+		<li>bbbb</li>
+		<li>cccc</li>
+	</ol>
 </body>
 </html>

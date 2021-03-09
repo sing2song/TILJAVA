@@ -1,15 +1,20 @@
 package test01;
 
+import java.lang.reflect.Method;
+
 public class MyCar {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String s = "Test";
+		String str = "Test";
 		try {
-			Class<?> o = Class.forName(s);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			Class<?> test = Class.forName(str);
+			Object obj = test.newInstance();
+			Method m =test.getDeclaredMethod("print");
+			m.invoke(obj);
+		
 			
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		

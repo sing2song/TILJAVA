@@ -247,7 +247,7 @@ public static void main(String[] args) {
 
 **Class.forname** : 자바 리플렉션 API(Java Reflection API)의 일부. **구체적인 클래스의 타입을 알지 못해도 클래스의 변수 및 메소드 등에 접근하게 해주는 API**입니다.(동적 바인딩)
 
-
+https://charlie-choi.tistory.com/120
 
 
 
@@ -274,7 +274,7 @@ response에서 get write하면은 보조스트림에서 printwrite이 튀어나�
 ![image-20210309122302405](md-images/image-20210309122302405.png)
 
 3. src폴더를 지워준다.
-4. 만든 프로젝트에서 우클릭 new - project - maven module을 생성 helloweb이름으로 war파일로 만들기
+4. 만든 프로젝트에서 우클릭 new - project - maven module을 생성 helloweb이름으로 war파일로 만들기 - **자식 프로젝트** 만들기
 
 ![image-20210309122422621](md-images/image-20210309122422621.png)
 
@@ -361,6 +361,99 @@ C:\Users\32153256\Desktop\ssong
 \localhost\helloweb\org\apache\jsp
 
 이 위치에 jsp를 다루는 클래스가 생긴 것을 확인할 수 있다.
+
+
+
+해당 jsp에서 이것저것 만들어봅쉬다~~~
+
+a태그, h1~h6태그, p태그 등등
+
+
+
+## 실습3
+
+form태그를 이용해서 전달하기
+
+form을 submit버튼으로 보내기위해선 action에 주소를 통해서 보내야한다.
+
+주소를 적지않으면 자기자신에게 보내지게 된다.
+
+
+
+- method의 값이 post냐 get냐에 따라 보내지는 주소 url이 달라진다.
+
+ex)
+
+GET http://localhost:8070/helloweb/join?email=sing2song%40naver.com&password=1234
+
+?와 &를 사용해서 값을 전달.
+
+POST http://localhost:8070/helloweb/join
+
+form을 이용해서 body에 붙여서 전달.
+
+
+
+![image-20210309162341841](md-images/image-20210309162341841.png)
+
+- JoinServlet을 생성해주자. url은 /join
+
+여기서 url을 고치지 못하면 web.xml에서 수정하면된다.
+
+
+
+데이터를 받을 때는 모두 **String**이다.
+
+```java
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String birthYear = request.getParameter("birthYear");
+		String gender = request.getParameter("gender");
+		
+		System.out.println(email);
+		System.out.println(password);
+		System.out.println(birthYear);
+		System.out.println(gender);
+		
+		response.setContentType("text/html; charset=utf-8");
+		response.getWriter().print("OK");
+	}
+```
+
+
+
+- Post방식으로 넘길때 한글이 깨지는걸 방지하는 코드
+
+```java
+request.setCharacterEncoding("utf-8");
+```
+
+![image-20210309165104861](md-images/image-20210309165104861.png)
+
+- tomcat을 통해서 넘어오는게 깨질때 수정하는 코드
+
+server.xml에서 수정
+
+```xml
+<Connector connectionTimeout="20000" port="8070" URIEncoding="utf-8" protocol="HTTP/1.1" redirectPort="8443"/>
+
+```
+
+![image-20210309165046133](md-images/image-20210309165046133.png)
+
+
+
+## JSP
+
+표현식과 구문식 사용법
+
+```jsp
+<% String no = request.getParameter("no"); %> 
+구문, 표현식을 쓸수있다.
+<%=no%>
+
+```
 
 
 
