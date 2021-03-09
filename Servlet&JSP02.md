@@ -248,3 +248,4 @@ public static void main(String[] args) {
 ## 소켓
 
 response에서 get write하면은 보조스트림에서 printwrite이 튀어나온다.
+
