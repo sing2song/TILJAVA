@@ -218,7 +218,7 @@ CGI (Common Gateway Interface) : [웹 서버](https://ko.wikipedia.org/wiki/웹_
 
 ## 과제
 
-Q . 문자열로 클래스 만드는 법. new없이 만들기.
+Q . 문자열로 클래스 만드는 법. **new없이 만들기.**
 
 ```java
 String s = "MyCar";
@@ -232,15 +232,21 @@ A.
 
 ```java
 public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    String s = "MyCar";
-    try {
-        Class<?> o = Class.forName(s);
-    } catch (ClassNotFoundException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
-}
+		// TODO Auto-generated method stub
+		String str = "test01.Test";
+		try {
+			Class<?> test = Class.forName(str);
+			Object obj = test.newInstance();
+			
+			Method m =test.getDeclaredMethod("print");
+			m.setAccessible(true);
+			m.invoke(obj);
+		
+			
+		} catch (Exception e) {
+		}
+	}
+
 ```
 
 
