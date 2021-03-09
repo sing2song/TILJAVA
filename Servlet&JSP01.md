@@ -413,6 +413,8 @@ https://github.com/sing2song/helloworld-maven.git
 
 ![image-20210308163625296](md-images/image-20210308163625296.png)
 
-8. 들어와있는 것을 확인할 수 있다! 빨간줄뜨는건 우클릭 - Maven - update 로 반영했다.
+8. 들어와있는 것을 확인할 수 있다! 빨간줄뜨는건 우클릭 - Maven - update 로 반영했다. 그런데 git이 연동이안되네...다른 것들은 clone받아서 되는데...이유를 찾아봐야할듯...
 
 ![image-20210308163718437](md-images/image-20210308163718437.png)
+
+9. 해당 프로젝트 우클릭 - Run as - Maven 어쩌구 - clean package 라고 이름쓴뒤 Run해보자. 정상으로 돌아가면 ok.
