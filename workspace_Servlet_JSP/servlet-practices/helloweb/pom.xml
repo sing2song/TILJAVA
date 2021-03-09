@@ -13,7 +13,7 @@
 
 
 	<build>
-		<finalName>helloweb-maven</finalName>
+		<finalName>helloweb</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>

@@ -188,7 +188,7 @@ stateless connection : 어떠한 이전 요청과도 무관한 각각의 요청�
 
 ### 웹 퍼블리싱
 
-정적인 웹페이지 => 웹프로그래밍이 아닌 퍼블리싱이라 한다.
+**정적인 웹페이지** => 웹프로그래밍이 아닌 퍼블리싱이라 한다.
 
 웹 페이지는 **HTML**이라는 표준 마크업랭귀지로 작성.
 
@@ -207,6 +207,12 @@ board.py => python
 CGI (Common Gateway Interface) : [웹 서버](https://ko.wikipedia.org/wiki/웹_서버) 상에서 사용자 [프로그램](https://ko.wikipedia.org/wiki/컴퓨터_프로그램)을 동작시키기 위한 조합이다. 존재하는 많은 웹 서버 프로그램은 CGI의 기능을 이용할 수 있다.
 
 
+
+### servlet & JSP
+
+**동적인 웹페이지**를 만들 때 사용
+
+웹 서버가 동적인 웹 페이지에 대한 요청을 받으면 서버는 웹 애플리케이션으로 요청을 넘긴다. 그러면 애플리케이션이 HTML 문서를 생성하여 웹 서버로 결과를 전달한다.
 
 
 
@@ -248,4 +254,123 @@ public static void main(String[] args) {
 ## 소켓
 
 response에서 get write하면은 보조스트림에서 printwrite이 튀어나온다.
+
+
+
+
+
+
+
+---
+
+## 실습1
+
+1. Maven프로젝트 만든다. 아래 체크
+
+![image-20210309122224854](md-images/image-20210309122224854.png)
+
+2. 칸을 채워서 finish 하고 완성~!
+
+![image-20210309122302405](md-images/image-20210309122302405.png)
+
+3. src폴더를 지워준다.
+4. 만든 프로젝트에서 우클릭 new - project - maven module을 생성 helloweb이름으로 war파일로 만들기
+
+![image-20210309122422621](md-images/image-20210309122422621.png)
+
+![image-20210309122527125](md-images/image-20210309122527125.png)
+
+5. helloweb이 빨간줄이 나오면 우클릭 Java EE Tools - Generate Deployment
+
+6. library를 추가하자! helloweb프로젝트 우클릭 - properties - target Runtime
+
+   ![image-20210309125321959](md-images/image-20210309125321959.png)
+
+7. 패키지를 만들고 서블렛을 만들어준다.
+
+![image-20210309125021618](md-images/image-20210309125021618.png)
+
+![image-20210309125424251](md-images/image-20210309125424251.png)
+
+![image-20210309125521823](md-images/image-20210309125521823.png)
+
+
+
+8. 생성완료!
+
+Servelt에서는 Get과 Post를 크게 차이를 두지 않는 것을 생성된 코드를 보고 알 수 있다.
+
+```java
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    response.getWriter().append("Served at: ").append(request.getContextPath());
+}
+
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    doGet(request, response);
+}
+```
+
+
+
+9. 서버를 켜서 실행해보자!
+
+현재 HelloServelt.java상태
+
+```java
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //response.getWriter().append("Served at: ").append(request.getContextPath());
+    response.getWriter().print("<h1>안녕세상아</h1>");
+}
+```
+
+http://localhost:8070/helloweb/hello
+
+위 주소로 갔다...!
+
+
+
+### Servlet URL Mapping
+
+helloweb프로젝트에서 web.xml을 들어가면 여기서 servlet을 다루는 것을 알 수 있다.
+
+```java
+<servlet-mapping>
+    <servlet-name>HelloServlet</servlet-name>
+    <url-pattern>/hello</url-pattern>
+</servlet-mapping>
+```
+
+
+
+## 실습2
+
+위의 상태에서 이어서하기
+
+servlet-practices프로젝트에서 webapp폴더에 index.html과 index.jsp를 만들어보자.
+
+web.xml에 index.html을 지정해놨으므로 http://localhost:8070/helloweb 이렇게만 써도 출력이 가능하다. 먼저 지정해둔 html을 읽기 때문에 index.jsp는 뒤에 인자로 붙여줘야한다.
+
+만들고 나면 
+
+C:\Users\32153256\Desktop\ssong
+
+\soltlux\TILJAVA\workspace_Servlet_JSP\.metadata\.plugins
+
+\org.eclipse.wst.server.core\tmp0\work\Catalina
+
+\localhost\helloweb\org\apache\jsp
+
+이 위치에 jsp를 다루는 클래스가 생긴 것을 확인할 수 있다.
+
+
+
+
+
+## eXerd
+
+https://ko.exerd.com/down.jsp
+
+다운받아두기
+
+
 

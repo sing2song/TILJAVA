@@ -6,9 +6,6 @@
 	<artifactId>servlet-practices</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<modules>
-		<module>helloweb</module>
-	</modules>
 	
 	<dependencies>
 	</dependencies>
@@ -25,9 +22,12 @@
 					<source>1.8</source>
 					<target>1.8</target>					
 				</configuration>
-			</plugin>
-				
+			</plugin>				
 		</plugins>
 	</build>
+	
+	<modules>
+		<module>helloweb</module>
+	</modules>
 	
 </project>
