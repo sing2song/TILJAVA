@@ -280,7 +280,7 @@ response에서 get write하면은 보조스트림에서 printwrite이 튀어나�
 ![image-20210309122302405](md-images/image-20210309122302405.png)
 
 3. src폴더를 지워준다.
-4. 만든 프로젝트에서 우클릭 new - project - maven module을 생성 helloweb이름으로 war파일로 만들기 - **자식 프로젝트** 만들기
+4. **만든 프로젝트에서** 우클릭 new - project - maven module을 생성 helloweb이름으로 war파일로 만들기 - **자식 프로젝트** 만들기
 
 ![image-20210309122422621](md-images/image-20210309122422621.png)
 
@@ -470,6 +470,12 @@ server.xml에서 수정
 https://ko.exerd.com/down.jsp
 
 다운받아두기
+
+이클립스 플러그인 버전은 안만들었다네..와이!!
+
+평가판으로 다운받읍시다.
+
+sing2song메일로 다운 받았고 30일간 사용가능합니당
 
 
 
