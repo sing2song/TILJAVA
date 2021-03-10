@@ -202,7 +202,7 @@ select문으로 데이터가 들어간것도 확인
 
 1. 어제 helloweb만든것처럼 emaillist01를 maven module로 만든다.
 
-단, war로 만든다!!!
+**단, war로 만든다!!!**
 
 생성하고 나면 pom.xml에 helloweb에 넣었던 build를 넣고 finalName태그 부분만 프로젝트 명으로(emaillist01)로 수정해준다.
 
@@ -454,21 +454,39 @@ public class EmaillistDao {
 
 
 
+# 과제
+
+## guestbook01만들기
 
 
 
+1. 위와같이 일단생성부터!
 
 ![image-20210310162819569](md-images/image-20210310162819569.png)
 
 
 
+2. 설정하기.
 
+2-1. pom.xml 수정
+
+2-2
+
+프로젝트 우클릭 - properties - Target Runtime - 아파치 서버 올리기
+
+프로젝트 우클릭 - Java EE Tools - Generate 어쩌구
+
+프로젝트 우클릭 - Maven - Maven update
+
+2-3. 서버에 올린다.
+
+2-4. 돌아가는 것을 확인!
 
 ![image-20210310163450503](md-images/image-20210310163450503.png)
 
 
 
-
+3. eXERD를 이용해서 DB를 만들어준다.
 
 ![image-20210310163502191](md-images/image-20210310163502191.png)
 
@@ -483,3 +501,28 @@ public class EmaillistDao {
 
 
 ![image-20210310163608503](md-images/image-20210310163608503.png)
+
+
+
+4. test쿼리문들을 만들어서 실험해본다.
+
+```mysql
+desc guestbook;
+
+-- insert
+insert into guestbook
+values (null, 'gg','5678','테스트입니다',now());
+
+-- select 
+select no, name, date_format(reg_date, '%Y년 %m월 %d일 %H시%i분%s초'), contents
+from guestbook
+order by reg_date desc;
+
+select no, name, password, date_format(reg_date, '%Y년 %m월 %d일 %H시%i분%s초'), contents
+from guestbook
+order by reg_date desc;
+
+-- delete
+delete from guestbook where no=1 and password=1234;
+```
+
