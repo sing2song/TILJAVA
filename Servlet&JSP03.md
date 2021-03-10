@@ -526,3 +526,8 @@ order by reg_date desc;
 delete from guestbook where no=1 and password=1234;
 ```
 
+
+
+5. 강사님이 준 파일을 넣어서 기본틀에서 돌아가는 것을 확인한다. DAO, VO를 만든다.
+
+C:\Users\32153256\Desktop\ssong\soltlux\TILJAVA\Servlet-jsp-20210310T001953Z-001\Servlet-jsp
