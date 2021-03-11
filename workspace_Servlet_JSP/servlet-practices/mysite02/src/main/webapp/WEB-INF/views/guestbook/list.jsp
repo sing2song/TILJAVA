@@ -20,25 +20,7 @@ List<Guestbook02Vo> list = new Guestbook02Dao().findAll();
 		<jsp:include page="/WEB-INF/views/includes/header.jsp" />
 		<div id="wrapper">
 			<div id="content">
-				<div id="site-introduction">
-					<form
-						action="<%=request.getContextPath()%>/guestbook?a=add"
-						method="post">
-						<table border=1 width=500>
-							<tr>
-								<td>이름</td>
-								<td><input type="text" name="name" value=""></td>
-								<td>비밀번호</td>
-								<td><input type="password" name="password" value=""></td>
-							</tr>
-							<tr>
-								<td colspan=4><textarea name="contents" cols=60 rows=5></textarea></td>
-							</tr>
-							<tr>
-								<td colspan=4 align=right><input type="submit" VALUE="확인"></td>
-							</tr>
-						</table>
-					</form>
+				<div id="site-introduction">					
 					<%
 					for (Guestbook02Vo vo : list) {
 					%>
