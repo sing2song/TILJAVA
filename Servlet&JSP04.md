@@ -57,3 +57,13 @@ Guestbook1를 위의 모델로 만든 Guestbook2만들기
 Servlet을 통해서 jsp를 넘기는 거다!
 
 MVC모델
+
+
+
+
+
+
+
+# Mysite02
+
+request.getContextPath() : 
