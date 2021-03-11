@@ -21,6 +21,7 @@ public class EmaillistServlet extends HttpServlet {
 
 		if("form".equals(action)) {
 			WebUtil.forward("/WEB-INF/views/form.jsp", request, response);
+		
 		} else if("add".equals(action)) {
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");

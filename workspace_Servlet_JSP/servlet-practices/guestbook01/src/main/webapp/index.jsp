@@ -5,7 +5,6 @@
 <%@page import="java.util.List"%>
 <%
 List<Guestbook01Vo> list = new Guestbook01Dao().findAll();
-
 %>
 <html>
 <head>
@@ -30,7 +29,7 @@ List<Guestbook01Vo> list = new Guestbook01Dao().findAll();
 		</table>
 	</form>
 	<%
-	for (Guestbook01Vo vo : list) {		
+	for (Guestbook01Vo vo : list) {
 	%>
 	<br>
 	<table width=510 border=1>

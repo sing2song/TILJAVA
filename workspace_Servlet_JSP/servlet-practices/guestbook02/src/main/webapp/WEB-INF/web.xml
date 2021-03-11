@@ -11,12 +11,13 @@
   </welcome-file-list>
   
   <servlet>
-    <servlet-name>EmaillistServlet</servlet-name>
-    <servlet-class>com.soltlux.emaillist.controller.EmaillistServlet</servlet-class>
+    <description></description>
+    <display-name>GuestbookServlet</display-name>
+    <servlet-name>GuestbookServlet</servlet-name>
+    <servlet-class>com.soltlux.guestbook02.controller.GuestbookServlet</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-    <servlet-name>EmaillistServlet</servlet-name>
-    <url-pattern>/el</url-pattern>
+    <servlet-name>GuestbookServlet</servlet-name>
+    <url-pattern>/GuestbookServlet</url-pattern>
   </servlet-mapping>
 </web-app>

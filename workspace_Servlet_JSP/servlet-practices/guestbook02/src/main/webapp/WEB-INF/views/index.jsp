@@ -1,44 +1,52 @@
-<%@page import="com.soltlux.emaillist.vo.EmaillistVo"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="com.soltlux.guestbook02.vo.Guestbook02Vo"%>
+<%@page import="com.soltlux.guestbook02.dao.Guestbook02Dao"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	List<EmaillistVo> list = (List<EmaillistVo>)request.getAttribute("list");
+List<Guestbook02Vo> list = new Guestbook02Dao().findAll();
 %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>방명록</title>
 </head>
 <body>
-	<h1>메일 리스트에 가입되었습니다.</h1>
-	<p>입력한 정보 내역입니다.</p>
-	<!-- 메일정보 리스트 -->
-	
-	<%
-		for(EmaillistVo vo : list) {
-	%>
-		<table border="1" cellpadding="5" cellspacing="2">
+	<form action="<%=request.getContextPath() %>/GuestbookServlet?a=add" method="post">
+		<table border=1 width=500>
 			<tr>
-				<td align=right>First name: </td>
-				<td><%=vo.getFirstName() %></td>
+				<td>이름</td>
+				<td><input type="text" name="name" value=""></td>
+				<td>비밀번호</td>
+				<td><input type="password" name="password" value=""></td>
 			</tr>
 			<tr>
-				<td align=right width="110">Last name: </td>
-				<td width="110"><%=vo.getLastName() %></td>
+				<td colspan=4><textarea name="contents" cols=60 rows=5></textarea></td>
 			</tr>
 			<tr>
-				<td align=right>Email address: </td>
-				<td><%=vo.getEmail() %></td>
+				<td colspan=4 align=right><input type="submit" VALUE="확인"></td>
 			</tr>
 		</table>
-		<br>
+	</form>
+	<%
+	for (Guestbook02Vo vo : list) {
+	%>
+	<br>
+	<table width=510 border=1>
+		<tr>
+			<td>[<%=vo.getNo()%>]</td>
+			<td><%=vo.getName()%></td>
+			<td><%=vo.getReg_date()%></td>
+			<td><a href="<%=request.getContextPath() %>/GuestbookServlet?a=deleteform&no=<%=vo.getNo()%>">삭제</a></td>
+		</tr>
+		<tr>
+			<td colspan=4>
+			<pre><%=vo.getContents()%></pre>
+			</td>
+		</tr>
+	</table>
 	<%
 		}
 	%>
-	
-	<p>
-		<a href="<%=request.getContextPath() %>/el?a=form">추가메일 등록</a>
-	</p>
-	<br>
 </body>
 </html>
