@@ -138,6 +138,12 @@ EL = Expression Language (표현식)
 
 
 
+JSTL = Java Standard Tag Library
+
+
+
+## 살아남는 순서
+
 1. 객체가 오래 존속되는 순서
 
 Application(Context) Scope > Session Scope > Request Scope > Page Scope
