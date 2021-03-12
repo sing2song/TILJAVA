@@ -22,6 +22,8 @@ public class GuestbookServlet extends HttpServlet {
 		if("deleteform".equals(action)) {
 			String no= request.getParameter("no");
 			request.setAttribute("no",no);
+			String fail = request.getParameter("fail");
+			request.setAttribute("fail", fail);
 			
 			WebUtil.forward("/WEB-INF/views/guestbook/deleteform.jsp", request, response);
 
@@ -48,9 +50,13 @@ public class GuestbookServlet extends HttpServlet {
 			System.out.println("no:"+no+", password:"+password);
 			if(new Guestbook02Dao().delete(no,password))	
 				WebUtil.redirect(request.getContextPath() + "/guestbook", request, response);
-			else
-				response.sendRedirect(request.getContextPath() +"/guestbook/deleteform.jsp?no="+no);
-		
+			else {
+				//비밀번호 틀렸을때
+				request.setAttribute("authResult", "fail");
+				WebUtil.forward("/guestbook?a=deleteform&no=" + no, request, response);
+				return;	
+				
+			}
 		}else if("list".equals(action)) {
 			List<Guestbook02Vo> list = new Guestbook02Dao().findAll();
 

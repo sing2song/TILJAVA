@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,6 +22,9 @@
 					<input type="password" name="password">
 					<input type="submit" value="확인">
 				</form>
+				<c:if test="${'fail'==authResult }">						
+						<div style="text-align:center;">비밀번호가 틀렸습니다.</div>							
+				</c:if>
 				<a href="${pageContext.request.contextPath }/guestbook?a=list">방명록 리스트</a>
 			</div>
 		</div>

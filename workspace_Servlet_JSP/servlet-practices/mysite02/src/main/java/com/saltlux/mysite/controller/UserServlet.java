@@ -45,12 +45,39 @@ public class UserServlet extends HttpServlet {
 			}
 			
 			Long no = authUser.getNo();
-			//UserVo userVo = new UserDao().findByNo();
-			UserVo userVo = new UserVo();
+			UserVo userVo = new UserDao().findByNo(no);
+			//UserVo userVo = new UserVo();
 			
 			request.setAttribute("userVo", userVo);
 			
 			WebUtil.forward("/WEB-INF/views/user/updateform.jsp", request, response);
+		
+		}else if("update".equals(action)){
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			String gender = request.getParameter("gender");
+			
+			HttpSession session = request.getSession();		
+			UserVo authUser = (UserVo)session.getAttribute("authUser");	
+			Long no = authUser.getNo();
+			
+			
+			UserVo userVo = new UserVo();
+			userVo.setNo(no);
+			userVo.setName(name);
+			userVo.setEmail(email);
+			userVo.setPassword(password);
+			userVo.setGender(gender);
+			
+			
+			System.out.println("[update-servlet] "+userVo);
+			
+			new UserDao().update(userVo);
+			authUser = new UserDao().findByEmailAndPassword(userVo);
+			session.setAttribute("authUser", authUser);//바뀐 정보 헤더에 띄우기 위해서
+			
+			WebUtil.redirect(request.getContextPath(), request, response);
 		
 		}else if("logout".equals(action)) {
 			HttpSession session = request.getSession();

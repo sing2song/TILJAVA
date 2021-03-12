@@ -302,3 +302,78 @@ new file - JSP 선택
 3. 사용가능!
 
 ![image-20210312142758176](md-images/image-20210312142758176.png)
+
+
+
+
+
+# 과제
+
+
+
+게시판 CRUD
+
+- 새글일 때
+
+depth는 현재그룹에서 최대값구해서 +1하기
+
+```mysql
+insert into board 
+values(null,?,?,(select max(group_no)from board a) + 1, 1, 1);
+```
+
+
+
+- 리스트 뿌릴 때 
+
+```mysql
+select * 
+from board 
+order by group_no desc, order_no asc;
+
+#그룹이 큰순으로 가져와서 그 글 그룹내에 순서대로 보여주기
+```
+
+
+
+수정할 때
+
+```mysql
+update board 
+set order_no = order_no+1
+where group_no=? and order_no>=
+```
+
+
+
+depth에따라 위치 옮기기
+
+```jsp
+<a href="" style="text-align:left; padding-left:0px;">
+<a href="" style="text-align:left; padding-left:${vo.depth-1*20}px;">
+```
+
+
+
+
+
+# 필터만들기
+
+예를 들어서 서블릿을 만들때
+
+request.setCharacterEncoding("utf-8");
+
+아래코드를 항상넣어야한다.
+
+
+
+패키지를 하나 만들어서 실습했다.
+
+com.saltlux.mysite.web
+
+![image-20210312175441015](md-images/image-20210312175441015.png)
+
+이 설정으로 필터를 만들어준다.
+
+
+
