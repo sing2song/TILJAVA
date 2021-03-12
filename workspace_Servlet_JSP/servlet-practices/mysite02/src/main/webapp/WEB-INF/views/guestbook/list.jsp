@@ -12,7 +12,8 @@ List<Guestbook02Vo> list = new Guestbook02Dao().findAll();
 <title>방명록</title>
 <link href="<%=request.getContextPath()%>/assets/css/guestbook.css"
 	rel="stylesheet" type="text/css">
-
+<link href="<%=request.getContextPath()%>/assets/css/mysite.css"
+	rel="stylesheet" type="text/css">
 </head>
 <body>
 

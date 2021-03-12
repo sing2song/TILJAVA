@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.saltlux.mysite.dao.UserDao;
 import com.saltlux.mysite.vo.UserVo;
@@ -19,12 +20,61 @@ public class UserServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String action = request.getParameter("a");
+		
 		if("joinform".equals(action)) {
 			WebUtil.forward("/WEB-INF/views/user/joinform.jsp", request, response);
 		
-		}else if("joinsuccess".equals(action)) {
-			
+		}else if("joinsuccess".equals(action)) {			
 			WebUtil.forward("/WEB-INF/views/user/joinsuccess.jsp", request, response);
+			
+		}else if("loginform".equals(action)) {
+			WebUtil.forward("/WEB-INF/views/user/loginform.jsp", request, response);
+		
+		}else if("logout".equals(action)) {
+			HttpSession session = request.getSession();
+			//로그인확인
+			if(session==null) {
+				WebUtil.redirect(request.getContextPath(), request, response);
+				return;
+			}
+			
+			UserVo authUser = (UserVo)session.getAttribute("authUser");			
+			if(authUser==null) {
+				WebUtil.redirect(request.getContextPath(), request, response);
+				return;
+			}
+			//////////////////////////////////
+			//로그아웃처리
+			if(session!=null && session.getAttribute("authUser")!=null) {
+				session.removeAttribute("authUser");
+				session.invalidate();//세션아이디 바꾸기
+			}
+			WebUtil.redirect(request.getContextPath(), request, response);
+		
+		}else if("login".equals(action)) {
+		
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			
+			UserVo vo = new UserVo();
+			vo.setEmail(email);
+			vo.setPassword(password);
+			
+			UserVo authUser = new UserDao().findByEmailAndPassword(vo);
+			
+			if(authUser==null) {//로그인실패
+				request.setAttribute("authResult", "fail");
+				//WebUtil.redirect(request.getContextPath()+"/user?a=loginform", request, response);
+				WebUtil.forward("/WEB-INF/views/user/loginform.jsp", request, response);
+				return;	
+			}
+			
+			//인증처리
+			HttpSession session = request.getSession(true);
+			session.setAttribute("authUser", authUser);
+			
+			//응답
+			WebUtil.redirect(request.getContextPath(), request, response);
 			
 		}else if("join".equals(action)){
 			String name = request.getParameter("name");

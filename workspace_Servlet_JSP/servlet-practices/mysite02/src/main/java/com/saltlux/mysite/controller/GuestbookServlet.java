@@ -41,7 +41,7 @@ public class GuestbookServlet extends HttpServlet {
 			WebUtil.redirect(request.getContextPath() + "/guestbook", request, response);
 		
 		}else if("delete".equals(action)) {
-			request.setCharacterEncoding("utf-8");
+			
 
 			String no = request.getParameter("no");
 			String password = request.getParameter("password");
@@ -58,7 +58,7 @@ public class GuestbookServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			WebUtil.forward("/WEB-INF/views/guestbook/list.jsp", request, response);			
 			
-		}else {//guestbook/index.jsp
+		}else {//guestbook/index.jsp - 방명록
 			List<Guestbook02Vo> list = new Guestbook02Dao().findAll();
 
 			// forwarding = request dispatch = request extension
