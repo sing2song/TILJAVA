@@ -4,7 +4,7 @@
 <%@page import="com.soltlux.guestbook02.dao.Guestbook02Dao"%>
 <%@page import="java.util.List"%>
 <%
-List<Guestbook02Vo> list = new Guestbook02Dao().findAll();
+List<Guestbook02Vo> list = (List<Guestbook02Vo>)request.getAttribute("list");
 %>
 <html>
 <head>
@@ -29,12 +29,14 @@ List<Guestbook02Vo> list = new Guestbook02Dao().findAll();
 		</table>
 	</form>
 	<%
+	int count = list.size();
+	int index = 0;
 	for (Guestbook02Vo vo : list) {
 	%>
 	<br>
 	<table width=510 border=1>
 		<tr>
-			<td>[<%=vo.getNo()%>]</td>
+			<td>[<%=count-index++ %>]</td>
 			<td><%=vo.getName()%></td>
 			<td><%=vo.getReg_date()%></td>
 			<td><a href="<%=request.getContextPath() %>/GuestbookServlet?a=deleteform&no=<%=vo.getNo()%>">삭제</a></td>

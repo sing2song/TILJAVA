@@ -54,7 +54,8 @@ public class GuestbookServlet extends HttpServlet {
 
 			// forwarding = request dispatch = request extension
 			request.setAttribute("list", list);
-			WebUtil.forward("/WEB-INF/views/index.jsp", request, response);
+			WebUtil.forward("/WEB-INF/views/index.jsp", request, response);		
+			
 		}
 
 	}

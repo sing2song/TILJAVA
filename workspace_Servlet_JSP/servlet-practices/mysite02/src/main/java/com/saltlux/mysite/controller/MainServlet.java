@@ -16,6 +16,9 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int visitCount = 0;
 		
+		
+		
+		
 		//쿠키 읽기
 		Cookie[] cookies = request.getCookies();
 		if(cookies!=null && cookies.length>0) {

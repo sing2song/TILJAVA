@@ -110,6 +110,79 @@ session.invalidate();//세션아이디 바꾸기
 
 
 
+request보다 session에 저장 되는 값이 더 오래간다.
+
+request는 페이지에 이동하는 순간 사라짐. 
+
+
+
+Application(Context) > session > request > page
+
+
+
+
+
 ---
 
+
+
 # JSTL
+
+자식 프로젝트로 jstlel을 만들었다.
+
+
+
+EL = Expression Language (표현식)
+
+자바코드가 아닌 표현식 이름이다!!!!
+
+
+
+1. 객체가 오래 존속되는 순서
+
+Application(Context) Scope > Session Scope > Request Scope > Page Scope
+
+2.  EL에서 이름을 찾는 순서
+
+Application(Context) Scope < Session Scope < Request Scope < Page Scope
+
+주의 : 같은 이름으로 여러 범위에 객체를 저장하지 말 것!
+
+
+
+예시
+
+_02Servlet.java
+
+```
+UserVo vo1 = new UserVo();
+		vo1.setNo(1L);
+		vo1.setName("쏘옹");
+		
+		request.setAttribute("vo", vo1);
+		
+		//session scope
+		UserVo vo2 = new UserVo();
+		vo2.setNo(2L);
+		vo2.setName("쏘옹2");
+		
+		request.getSession(true).setAttribute("vo", vo2);
+		
+		request.getRequestDispatcher("/WEB-INF/views/02.jsp").forward(request, response);
+```
+
+
+
+02.jsp
+
+```jsp
+<h1>Scope Test</h1>
+${vo.no }<br>
+${vo.name }<br>
+```
+
+
+
+> 결과
+
+![image-20210312123230015](md-images/image-20210312123230015.png)
