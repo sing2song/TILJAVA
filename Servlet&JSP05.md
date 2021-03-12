@@ -140,6 +140,18 @@ EL = Expression Language (표현식)
 
 JSTL = Java Standard Tag Library
 
+사용하기 전에 pom.xml에 라이브러리를 넣는다.
+
+```java
+<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+```
+
+
+
 
 
 ## 살아남는 순서
@@ -192,3 +204,101 @@ ${vo.name }<br>
 > 결과
 
 ![image-20210312123230015](md-images/image-20210312123230015.png)
+
+
+
+## JSTL 태그
+
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+```
+
+
+
+```jsp
+<c:set var="count" value="${fn:length(list) }"/>
+```
+
+- count라는 변수에 해당 함수를 집어 넣은 것.
+
+
+
+```jsp
+<c:forEach items='${list}' var='vo' varStatus='status'>
+		[${count-status.index } => ${status.index }: ${status.count }] [${vo.no } : ${vo.name }]<br>
+	</c:forEach>
+```
+
+- list로  받아오는걸 vo에 넣어서 for문돌리기
+
+  ex: for( UserVo vo : list)
+
+
+
+
+
+- EL에서는 개행 문자를 쓰지 못한다.
+
+${fn:replace(vo.contents,"\n","< br >" }
+
+대체할 수 있는 스크립트 코드를 써줘야한다.
+
+```jsp
+<% pageContext.setAttribute("newline","\n");%>
+
+위와같이 지정한 후에
+
+${fn:replace(vo.contents,newline,"<br/>" }
+이렇게 변형해서 사용함.
+나는 html태그인 <pre></pre>를 사용해서 표현했었음.
+```
+
+
+
+
+
+# TIP  - 템플릿만들기
+
+JSP 사용할 때 새로운 템플릿 만들기
+
+new file - JSP 선택
+
+아래의 내용을 템플릿으로 만들겠다!
+
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
+```
+
+
+
+1. 
+
+![image-20210312141514138](md-images/image-20210312141514138.png)
+
+
+
+2. 
+
+![image-20210312141728113](md-images/image-20210312141728113.png)
+
+
+
+3. 사용가능!
+
+![image-20210312142758176](md-images/image-20210312142758176.png)
