@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.saltlux.mysite.vo.UserVo;
 import com.saltlux.web.mvc.WebUtil;
 
 public class BoardServlet extends HttpServlet {
@@ -16,6 +17,10 @@ public class BoardServlet extends HttpServlet {
 		
 		String action = request.getParameter("a");
 		if("writeform".equals(action)) {
+			
+		}else if("write".equals(action)){
+			UserVo authUser = (UserVo)request.getAttribute("authUser");
+			
 			
 		}else {
 			WebUtil.forward("/WEB-INF/views/board/index.jsp", request, response);
