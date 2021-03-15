@@ -110,6 +110,8 @@ public class UserServlet extends HttpServlet {
 			vo.setPassword(password);
 			
 			UserVo authUser = new UserDao().findByEmailAndPassword(vo);
+			authUser.setEmail(email);
+			authUser.setPassword(password);
 			
 			if(authUser==null) {//로그인실패
 				request.setAttribute("authResult", "fail");
