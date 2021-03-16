@@ -49,6 +49,43 @@ public class BoardServlet extends HttpServlet {
 
 			WebUtil.redirect(request.getContextPath() + "/board", request, response);
 			
+		}else if("look".equals(action)){
+			//로그인확인 - Access Control(접근 제어)
+			HttpSession session = request.getSession();	
+			UserVo authUser = (UserVo)session.getAttribute("authUser");	
+			
+			String no = request.getParameter("no");
+			BoardVo vo = new BoardDao().findByNo(no);
+			
+			//hit늘리기
+			new BoardDao().updateHit(no);
+			System.out.println("vo의 이메일 : "+vo.getEmail()+",유저의 이메일 : "+authUser.getEmail());
+			
+			session.setAttribute("authUser", authUser);//로그인정보
+			request.setAttribute("vo", vo);
+			request.setAttribute("no", no);
+			
+			WebUtil.forward("WEB-INF/views/board/look.jsp", request, response);
+		}else if("updateform".equals(action)){
+			
+			String no = request.getParameter("no");
+			BoardVo vo = new BoardDao().findByNo(no);
+			
+			request.setAttribute("vo", vo);
+			request.setAttribute("no", no);
+			
+			WebUtil.forward("WEB-INF/views/board/updateform.jsp", request, response);
+		}else if("update".equals(action)){//글수정
+			
+			String no = request.getParameter("no");
+			String title = request.getParameter("title");
+			String contents = request.getParameter("contents");
+			
+			new BoardDao().update(no,title,contents);
+			
+			
+			WebUtil.redirect(request.getContextPath()+"/board", request, response);
+			
 		}else {//index들어가기
 			
 			//로그인확인 - Access Control(접근 제어)

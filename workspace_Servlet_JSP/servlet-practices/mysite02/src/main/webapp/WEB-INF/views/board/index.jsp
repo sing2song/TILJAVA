@@ -34,7 +34,7 @@
 					
 					<tr>
 						<td>${count-status.index}</td>
-						<td><a href="" style="text-align:left; padding-left:0px;">${vo.title}</a></td>
+						<td><a href="${pageContext.request.contextPath}/board?a=look&no=${vo.no}" style="text-align:left; padding-left:0px;">${vo.title}</a></td>
 						<td>${vo.writer}</td>
 						<td>${vo.hit}</td>
 						<td>${vo.regDate}</td>

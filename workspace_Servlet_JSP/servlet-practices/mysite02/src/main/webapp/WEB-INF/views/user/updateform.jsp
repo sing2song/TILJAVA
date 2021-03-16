@@ -50,7 +50,7 @@
 						<label>서비스 약관에 동의합니다.</label>
 					</fieldset>
 
-					<input type="submit" value="가입하기">
+					<input type="submit" value="수정하기">
 
 				</form>
 			</div>
