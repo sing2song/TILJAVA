@@ -33,6 +33,9 @@
 					</table>
 					<div class="bottom">
 						<a href="${pageContext.request.contextPath }/board">취소</a> 
+						<c:if test="${!empty authUser }">
+						<a href="${pageContext.request.contextPath }/board?a=replyfrom&no=${no}">답글</a> 
+						</c:if>
 						<c:if test="${vo.email==authUser.email}">
 							<a href="${pageContext.request.contextPath}/board?a=updateform&no=${no}" >수정</a>
 							<a href="${pageContext.request.contextPath}/board?a=deleteform&no=${no}" >삭제</a>

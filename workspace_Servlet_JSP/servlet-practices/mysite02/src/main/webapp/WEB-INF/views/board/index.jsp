@@ -15,8 +15,8 @@
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<div id="content">
 			<div id="board">
-				<form id="search_form" action="" method="post">
-					<input type="text" id="kwd" name="kwd" value="">
+				<form id="search_form" action="${pageContext.request.contextPath }/board?a=search" method="post">
+					<input type="text" id="kwd" name="search" value="">
 					<input type="submit" value="찾기">
 				</form>
 				<table class="tbl-ex">
@@ -33,8 +33,29 @@
 					<c:forEach items="${list}" var='vo' varStatus='status'>
 					
 					<tr>
-						<td>${count-status.index}</td>
-						<td><a href="${pageContext.request.contextPath}/board?a=look&no=${vo.no}" style="text-align:left; padding-left:0px;">${vo.title}</a></td>
+						<td>${vo.no}</td>
+						<td>
+						<c:choose>
+							<c:when test="${vo.flag=='1'}">
+								<c:if test="${vo.depth==0}">
+									<span style="color:gray;">[삭제된 글입니다]</span>
+								</c:if>		
+								<c:if test="${vo.depth>0}">
+									<img src="${pageContext.request.contextPath }/assets/images/reply.png" style="text-align:left;"/>
+									<span style="color:gray;">[삭제된 답글입니다]</span>
+								</c:if>								
+							</c:when>
+												
+							<c:otherwise>
+								<a href="${pageContext.request.contextPath}/board?a=look&no=${vo.no}" style="text-align:left; padding-left:${vo.depth*20}px;">
+									<c:if test="${vo.depth>0}">
+									<img src="${pageContext.request.contextPath }/assets/images/reply.png" style="text-align:left;"/>
+									</c:if>
+									${vo.title}											
+								</a>
+							</c:otherwise>
+						</c:choose>		
+						</td>
 						<td>${vo.writer}</td>
 						<td>${vo.hit}</td>
 						<td>${vo.regDate}</td>
@@ -46,24 +67,7 @@
 					</tr>
 					
 					</c:forEach>
-				<%-- 	<tr>
-						<td>2</td>
-						<td><a href="" style="text-align:left; padding-left:20px;">
-						<img src="${pageContext.request.contextPath }/assets/images/reply.png"/>두 번째 글입니다.</a></td>
-						<td>안대혁</td>
-						<td>3</td>
-						<td>2015-10-02 12:04:12</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td><a href="" style="text-align:left; padding-left:40px;">
-						<img src="${pageContext.request.contextPath }/assets/images/reply.png"/>첫 번째 글입니다.</a></td>
-						<td>안대혁</td>
-						<td>3</td>
-						<td>2015-09-25 07:24:32</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr> --%>
+				
 				</table>
 				
 				<!-- pager 추가 -->
@@ -73,8 +77,8 @@
 						<li class="selected"><a href="/mysite02/board?p=1">1</a></li>
 						<li><a href="/mysite02/board?p=2">2</a></li>
 						<li><a href="/mysite02/board?p=3">3</a></li>
-						<li>4</li>
-						<li>5</li>
+						<li><a href="/mysite02/board?p=4">4</a></li>
+						<li><a href="/mysite02/board?p=5">5</a></li>
 						<li><a href="">▶</a></li>
 					</ul>
 				</div>					
