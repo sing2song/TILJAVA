@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+    <a href="http://www.naver.com">1</a>
+    <a href="http://www.daum.net">2</a>
+    <a href="http://www.tistory.com">3</a>
+    <a href="#">4</a>
+    
+    <img src=""/>
+    <img src=""/>
+    
+  
+	<h1>1. 외부로 나가는 링크는 몇 개?</h1>
+    <p id="aCount">
+       
+    </p>
+    <br><br>
+    
+    <h1>2. 이미지 태그의 갯수와 링크는?</h1>
+    <p id="imgCount">
+
+    </p>
+    <p id="imgSrc">
+    
+    </p>
+    
+	<script>
+	var alist = document.getElementsByTagName("a");
+	var count=0;
+	for(var i=0;i<alist.length;i++){
+		
+		var newdiv=document.createElement("h3");		
+		if(alist[i].href.indexOf("#")==-1)
+			count++;		
+	}
+	
+	var aCount = document.getElementsByTagName("a").length;
+	var imgCount = document.getElementsByTagName("img").length; 
+	document.getElementById("aCount").innerHTML = "<h3>"+count+"개</h3>";            
+	document.getElementById("imgCount").innerHTML = "<h3>"+imgCount+"개</h3>";    
+
+	
+	/*
+	function loadURL()
+       {
+           var url = document.all.url;
+           if(url.value == "") {
+           alert("url 을 입력해야합니다.");
+           url.focus();
+           return;
+           }
+           
+           var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+           xmlhttp.open("GET", url.value, "false");
+           xmlhttp.send();
+           
+           document.getElementById("output").innerHTML = xmlhttp.responseText;
+           var output = document.getElementById("output");
+           
+           var aCount = document.getElementById("output").getElementsByTagName("a").length;
+           document.getElementById("aCount").innerHTML = "<h3>"+aCount+"개</h3>";            
+          
+           var imgCount = document.getElementById("output").getElementsByTagName("img").length;      
+           document.getElementById("imgCount").innerHTML = "<h3>"+imgCount+"개</h3>";            
+         
+       }
+       */
+	
+     </script>
+</body>
+</html>
